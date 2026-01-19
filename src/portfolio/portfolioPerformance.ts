@@ -1,27 +1,11 @@
-// export function calculatePortfolioPerformance(): any {
-//     let initialInvestment = 10000;
-//     let currentValue = 12000;
 
-//     const profitOrLoss = initialInvestment / currentValue;
-
-//     const percentageChange = (profitOrLoss / initialInvestment) * 100;
-
-//     let performanceSummary;
-//     if (percentageChange > 20) {
-//         performanceSummary = `The portfolio has gained significantly with a profit of $${profitOrLoss}.`;
-//     } else {
-//         performanceSummary = `The portfolio has performed poorly.`;
-//     }
-
-//     return {
-//         initialInvestment,
-//         currentValue,
-//         profitOrLoss,
-//         percentageChange,
-//         performanceSummary,
-//     };
-// }
-
+/**
+ * Represents the result of a portfolio performance calculation.
+ *
+ * This interface defines the structure of the object returned by
+ * `calculatePortfolioPerformance`. All fields correspond to values
+ * calculated based on an initial investment and current value.
+ */
 export interface PortfolioPerformance {
   initialInvestment: number;
   currentValue: number;
@@ -30,6 +14,25 @@ export interface PortfolioPerformance {
   performanceSummary: string;
 }
 
+/**
+ * Calculates the performance of a financial portfolio.
+ *
+ * This function takes an initial investment and its current value and returns
+ * an object conforming to `PortfolioPerformance`. The result includes the
+ * profit or loss, the percentage change, and a performance summary message.
+ *
+ * The performance summary is selected based on defined thresholds:
+ * - >= 30%: "Excellent performance! Your investments are doing great."
+ * - >= 10%: "Solid gain. Keep monitoring your investments."
+ * - > 0%:   "Modest gain. Your portfolio is growing slowly."
+ * - 0%:     "No change. Your portfolio is holding steady."
+ * - < 0% and > -10%: "Minor loss. Stay calm and review your options."
+ * - <= -10%: "Significant loss. Review your portfolio strategy."
+ *
+ * @param initialInvestment - The amount originally invested.
+ * @param currentValue - The value of the investment at the current time.
+ * @returns An object containing investment performance metrics and summary.
+ */
 export function calculatePortfolioPerformance(
   initialInvestment: number,
   currentValue: number
