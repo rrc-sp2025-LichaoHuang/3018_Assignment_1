@@ -23,4 +23,16 @@ app.get("/api/v1/health", (req: Request, res: Response) => {
 
 import { calculatePortfolioPerformance } from "./portfolio/portfolioPerformance";
 
+app.get("/api/v1/portfolio/performance", (req, res) => {
+  const initialInvestment = Number(req.query.initialInvestment);
+  const currentValue = Number(req.query.currentValue);
+
+  const result = calculatePortfolioPerformance(
+    initialInvestment,
+    currentValue
+  );
+
+  res.json(result);
+});
+
 export default app;
