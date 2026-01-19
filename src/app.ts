@@ -21,6 +21,6 @@ app.get("/api/v1/health", (req: Request, res: Response) => {
   res.json(healthData);
 });
 
-
+import { calculatePortfolioPerformance } from "./portfolio/portfolioPerformance";
 
 export default app;
